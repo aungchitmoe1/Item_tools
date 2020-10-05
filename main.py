@@ -20,7 +20,7 @@ class Menu:
             Program Menu  
  
 
-             1. Add diary
+             1. Create code
  
              2. Quit program
              """)
