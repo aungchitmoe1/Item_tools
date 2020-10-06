@@ -14,7 +14,24 @@ class Menu:
             "4" : "EVO",
             "5" : "PS"
         }
+        #DICTIONARY CREATED BY MMC
+        self.metric_choice={
+            "1" : "KG",
+            "2" : "GM",
+            "3" : "LT",
+            "4" : "CC",
+            "5" : "PACK"
+        }
+        #END OF DICTIONARY CREATION BY MMC
         self.company=""
+        #Create by MMC
+        self.metric=""
+        #Create by MMC
+        self.quantity=""
+        #Create by MMC
+        self.quantity_int=0
+        #Create by MMC
+        self.quantity_str=""
         self.sku=""
         self.uni_identifier=""
         self.variant="A"
@@ -32,16 +49,27 @@ class Menu:
              2. Quit program
              """)
 
-    def display_company(self):
-        print("""
-        Select The company
+    #Change by MMC
+    def display_company(self,msg,criteria,input_msg):
+        while True:
+            print(msg)
+            choize=input(input_msg)
+            action=criteria.get(choize)
+            if action:
+                return action
+            else:
+                 print("{0} is not a valid choice".format(choize))
+         
+
+    #    print(
+    #     Select The company
         
-        1. Awba                 4.EVO
+    #     1. Awba                 4.EVO
 
-        2. Kaung Thu Kha        5.Pahtama Seeds
+    #     2. Kaung Thu Kha        5.Pahtama Seeds
 
-        3. WiSarRa
-        """)
+    #     3. WiSarRa
+    #     )
     
     def run(self):
         while True:
@@ -53,17 +81,51 @@ class Menu:
                 action()
             else:
                 print("{0} is not a valid choice".format(choice))
+    #Create def by MMC
+    def get_unit(self):
+        while True:
+            try:
+                quantity_int1=int(input("Enter the Quantity (Quantity must be at most three digits:     "))
+                if quantity_int1 < 1 or quantity_int1>999:
+                   print("The value must be at most 3 digits integer")
+                else:
+                    return quantity_int1
+            except ValueError:
+                print("The value must be at most 3 digits integer")
+                
+           
+                
+    #End of def Creation by MMC
+
 
     def add_code(self):
-        self.display_company()
-        choize=str(input("Enter a company ooption : "))
-        self.company = self.company_choice[choize]
+        company_choice_msg= """Select The company
+        
+        1. Awba                 4.EVO
 
+        2. Kaung Thu Kha        5.Pahtama Seeds
+
+        3. WiSarRa"""
+
+        metric_choice_msg= """Select The Metric
+        
+        1. KG                 2. GM
+
+        3. LT                 4. CC
+
+        5. PACK """
+        #Update by MMC
+        self.company=self.display_company(company_choice_msg,self.company_choice,"Enter a company option")
         self.uni_identifier = input("Enter Unique Identifier:         " )
         self.formu_type = input("Enter Formula Type:         " )
         self.group_code = input("Enter Group code:         " )
-        self.sku = input("Enter SKU : ")
-
+        #Create by MMC for SKU Section
+        self.metric=self.display_company(metric_choice_msg,self.metric_choice,"Enter a metric option")
+        self.quantity_int=self.get_unit()
+        self.quantity_str=str(self.quantity_int)
+        self.quantity=self.quantity_str.zfill(3)
+        self.sku = self.quantity+self.metric
+        #End of Creation by MMC for SKU Section
         print("Your item code is : "+self.company + self.uni_identifier +'-'+ self.variant +'-'+ self.formu_type+'-' +self.group_code + self.sku)
 
     def quit(self):
