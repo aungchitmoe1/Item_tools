@@ -7,6 +7,13 @@ class Menu:
             "1" : self.add_code,
             "2" : self.quit
         }
+        self.company_choice={
+            "1" : "AW",
+            "2" : "KTK",
+            "3" : "WSR",
+            "4" : "EVO",
+            "5" : "PS"
+        }
         self.company=""
         self.sku=""
         self.uni_identifier=""
@@ -24,6 +31,17 @@ class Menu:
  
              2. Quit program
              """)
+
+    def display_company(self):
+        print("""
+        Select The company
+        
+        1. Awba                 4.EVO
+
+        2. Kaung Thu Kha        5.Pahtama Seeds
+
+        3. WiSarRa
+        """)
     
     def run(self):
         while True:
@@ -37,7 +55,10 @@ class Menu:
                 print("{0} is not a valid choice".format(choice))
 
     def add_code(self):
-        self.company = input("Enter a Company name:         " )
+        self.display_company()
+        choize=str(input("Enter a company ooption : "))
+        self.company = self.company_choice[choize]
+
         self.uni_identifier = input("Enter Unique Identifier:         " )
         self.formu_type = input("Enter Formula Type:         " )
         self.group_code = input("Enter Group code:         " )
