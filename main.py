@@ -14,7 +14,6 @@ class Menu:
             "4" : "EVO",
             "5" : "PS"
         }
-        #DICTIONARY CREATED BY MMC
         self.metric_choice={
             "1" : "KG",
             "2" : "GM",
@@ -22,7 +21,50 @@ class Menu:
             "4" : "CC",
             "5" : "PACK"
         }
-        #END OF DICTIONARY CREATION BY MMC
+        self.formu_type_choice={
+            "1" : "EC",
+            "2" : "SC",
+            "3" : "SL",
+            "4" : "WP",
+            "5" : "SP",
+            "6" : "GR",
+            "7" : "WG",
+            "8" : "TA",
+            "9" : "OD",
+            "10": "FS",
+            "11": "DF",
+            "12": "CP",
+            "13": "FB",
+            "14": "OT",
+            "15": "SE"
+                    }
+        
+        self.group_choice={
+
+            "1": "HE",
+            "2": "IN",
+            "3": "FU",
+            "4": "NF",
+            "5": "PG",
+            "6": "NE",
+            "7": "BA",
+            "8": "RO",
+            "9": "ST",
+            "10": "NC",
+            "11": "FB",
+            "12": "MO",
+            "13": "FT",
+            "14": "BP",
+            "15": "NS",
+            "16": "NT",
+            "17": "NA",
+            "18": "IF",
+            "19": "SU",
+            "20": "SD",
+            "21": "AF"
+
+        }
+        
         self.company=""
         #Create by MMC
         self.metric=""
@@ -114,11 +156,33 @@ class Menu:
         3. LT                 4. CC
 
         5. PACK """
-        #Update by MMC
+
+        formu_type_msg=""" 
+                            1. EC           9.  OD
+                            2. SC           10. FS
+                            3. SL           11. DF
+                            4. WP           12. CP
+                            5. SP           13. FB
+                            6. GR           14. OT
+                            7. WG           15. SE
+                            8. TA
+                        """
+        
+        group_type_msg=""" 
+                           1. HE    8. RO    15. NS
+                           2. IN    9. ST    16. NT
+                           3. FU    10. NC   17. NA
+                           4. NF    11. FB   18. IF
+                           5. PG    12. MO   19. SU
+                           6. NE    13. FT   20. SD
+                           7. BA    14. BP   21. AF
+
+        """
+ 
         self.company=self.display_company(company_choice_msg,self.company_choice,"Enter a company option")
         self.uni_identifier = input("Enter Unique Identifier:         " )
-        self.formu_type = input("Enter Formula Type:         " )
-        self.group_code = input("Enter Group code:         " )
+        self.formu_type=self.display_company(formu_type_msg,self.formu_type_choice,"Enter a formula type")
+        self.group_code=self.display_company(group_type_msg,self.group_choice,"Enter a group code")
         #Create by MMC for SKU Section
         self.metric=self.display_company(metric_choice_msg,self.metric_choice,"Enter a metric option")
         self.quantity_int=self.get_unit()
