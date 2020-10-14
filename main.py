@@ -157,7 +157,8 @@ class Menu:
 
         5. PACK """
 
-        formu_type_msg=""" 
+        formu_type_msg="""
+                        Please select following formula type.
                             1. EC           9.  OD
                             2. SC           10. FS
                             3. SL           11. DF
@@ -168,7 +169,8 @@ class Menu:
                             8. TA
                         """
         
-        group_type_msg=""" 
+        group_type_msg="""
+                        Please select following group type.
                            1. HE    8. RO    15. NS
                            2. IN    9. ST    16. NT
                            3. FU    10. NC   17. NA
@@ -179,12 +181,12 @@ class Menu:
 
         """
  
-        self.company=self.display_company(company_choice_msg,self.company_choice,"Enter a company option")
+        self.company=self.display_company(company_choice_msg,self.company_choice,"Enter a company option : ")
         self.uni_identifier = input("Enter Unique Identifier:         " )
-        self.formu_type=self.display_company(formu_type_msg,self.formu_type_choice,"Enter a formula type")
-        self.group_code=self.display_company(group_type_msg,self.group_choice,"Enter a group code")
+        self.formu_type=self.display_company(formu_type_msg,self.formu_type_choice,"Enter a formula type : ")
+        self.group_code=self.display_company(group_type_msg,self.group_choice,"Enter a group code : ")
         #Create by MMC for SKU Section
-        self.metric=self.display_company(metric_choice_msg,self.metric_choice,"Enter a metric option")
+        self.metric=self.display_company(metric_choice_msg,self.metric_choice,"Enter a metric option : ")
         self.quantity_int=self.get_unit()
         self.quantity_str=str(self.quantity_int)
         self.quantity=self.quantity_str.zfill(3)
